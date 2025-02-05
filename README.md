@@ -62,8 +62,6 @@ openpyxl
 - Add **longer delays** (`time.sleep(10)`) if Groww rate-limits your requests.
 
 ## 📌 To-Do
-- [ ] Implement dynamic user-agent rotation to avoid detection
-- [ ] Use `Selenium` for JavaScript-rendered content
-- [ ] Add logging and better error handling
+- [ ] Use data for time-series analysis or input to ML model (potential LSTM)
 
 
