@@ -17,7 +17,7 @@ urls = [
     'https://groww.in/us-stocks/grab'
 ]
 
-all_data = []
+stonks = []
 
 for url in urls:
     page = requests.get(url, headers=headers)
@@ -34,6 +34,7 @@ for url in urls:
         price = soup.find('span', {'class': 'uht141Pri contentPrimary displayBase'}).text.strip()
 
         change_element = soup.find('div', {'class': 'uht141Day bodyBaseHeavy contentNegative'})
+        # if stock is going positive, different className to extract
         if not change_element:
             change_element = soup.find('div', {'class': 'uht141Day bodyBaseHeavy contentPositive'})
         change = change_element.text.strip() if change_element else "N/A"
@@ -41,7 +42,7 @@ for url in urls:
         volume_cells = soup.find_all('td', {'class': 'bodyLargeHeavy'})
         volume = volume_cells[2].text.strip() if len(volume_cells) > 2 else "N/A"
 
-        all_data.append([company, price, change, volume])
+        stonks.append([company, price, change, volume])
 
     except AttributeError as e:
         print(f"Could not extract data for {url}: {e}")
@@ -49,7 +50,7 @@ for url in urls:
     time.sleep(5)
 
 
-df = pd.DataFrame(all_data, columns=["Company", "Price", "Change", "Volume"])
+df = pd.DataFrame(stonks, columns=["Company", "Price", "Change", "Volume"])
 df.to_excel('stocks.xlsx', index=False)
 
 print('Done')
