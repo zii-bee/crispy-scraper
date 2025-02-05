@@ -1,4 +1,4 @@
-# 🏀 Stock Price Scraper
+# Stock Price Scraper
 
 This project is a **Python web scraper** that extracts stock price data from Groww using `requests` and `BeautifulSoup` and saves the data to an **Excel file** using `pandas`.
 
@@ -66,9 +66,4 @@ openpyxl
 - [ ] Use `Selenium` for JavaScript-rendered content
 - [ ] Add logging and better error handling
 
-## 📜 License
-This project is licensed under the **MIT License**.
-
----
-### 🚀 Happy Scraping! 🏀📊
 
